@@ -1,5 +1,28 @@
+
+ 
 function minDate(dates) {
   //write you code here
+	let ans = [];
+	ans[0] = 9999, ans[1] = 12, ans[2] = 31;
+	for(let i=0; i<dates.length; i++) {
+		let date = dates[i]
+		let arr = date.split("/");
+
+	    if(arr[0] < ans[0]) {
+			ans[0] = arr[0], ans[1] = arr[1], ans[2] = arr[2];
+		}else if (arr[0] === ans[0]) {
+			if(arr[1] < ans[1]) {
+				ans[1] = arr[1], ans[2] = arr[2];
+			}else if(arr[1] == ans[1]) {
+				if(arr[2] < ans[2]) {
+					ans[2] = arr[2];
+				}
+			}
+		}
+	}
+
+	return ans.join("/");
+	
 }
 
 // Do not change the code
@@ -37,4 +60,4 @@ var dates = [
   "2023/03/30",
 ];
 
-alert(minDate(dates));
+// alert(minDate(dates));
